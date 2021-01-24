@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import es.algoritmo.backgroundlocation.mylocationmanager.MyLocationManager
+import es.algoritmo.backgroundlocation.mylocationmanager.PermissionState
+import es.algoritmo.backgroundlocation.mylocationmanager.PermissionType
 
 class MainActivity : AppCompatActivity() {
-    val locationManager = MyLocationManager()
+    private val locationManager = MyLocationManager()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.btCheckPermissions).setOnClickListener {
+        findViewById<Button>(R.id.btFetchLocations).setOnClickListener {
             when (locationManager.checkPermisions(this, PermissionType.BACKGROUND_MAX_ACCURACY)) {
                 PermissionState.GRANTED -> {
                     Intent(this, GPSActivity::class.java).also {

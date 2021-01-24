@@ -7,10 +7,10 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btCheckPermissions"
+        android:id="@+id/btFetchLocations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check Permisions"
+        android:text="Fetch locations"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
