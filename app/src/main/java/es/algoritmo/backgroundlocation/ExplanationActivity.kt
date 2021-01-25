@@ -1,5 +1,6 @@
 package es.algoritmo.backgroundlocation
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -21,6 +22,9 @@ class ExplanationActivity: AppCompatActivity() {
                 when(permissionState) {
                     PermissionState.GRANTED -> {
                         Log.e("DEBUG", "GRANTED")
+                        Intent(this, GPSActivity::class.java).also {
+                            startActivity(it)
+                        }
                     }
                     PermissionState.GRANTED_FOREGROUND_ONLY -> {
                         Log.e("DEBUG", "GRANTED_FOREGROUND_ONLY")
