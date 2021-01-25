@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat
 
 typealias CallbackLocationManager = (state: PermissionState) -> Unit
 enum class PermissionState {
-    GRANTED,
-    GRANTED_FOREGROUND_ONLY,
+    GRANTED, //background and foreground
+    GRANTED_FOREGROUND_ONLY, // only foreground
     DENIED
 }
 enum class PermissionType {
@@ -119,7 +119,7 @@ class MyLocationManager {
                 PermissionType.BACKGROUND_MAX_ACCURACY -> {
                     callback?.let {
                         if (fineLocation || ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED) {
-                            if (backgroundLocation) {
+                            if (backgroundLocation || Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
                                 it(PermissionState.GRANTED)
                             } else {
                                 it(PermissionState.GRANTED_FOREGROUND_ONLY)
